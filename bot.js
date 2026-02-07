@@ -4,7 +4,7 @@ const { Telegraf, Markup } = require('telegraf');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 // Bura sənin Mini App linkin gələcək (hələlik nümunə qoyuruq)
-const web_link ="https://tall-schools-grow.loca.lt"; 
+const web_link ="https://vexera-bot.onrender.com"; 
 
 bot.start((ctx) => {
     ctx.reply(`Xoş gəldin Vexora dünyasına, ${ctx.from.first_name}! 🚀`, 
@@ -35,4 +35,5 @@ bot.action('dash', (ctx) => {
 // Settings düyməsi üçün reaksiya
 bot.action('settings', (ctx) => {
     ctx.reply('⚙️ Parametrlər menyusu:\n\n🔔 Bildirişlər: ✅\n🌍 Dil: Azərbaycan\n🛡️ Hesab Təhlükəsizliyi: Yüksək');
+
 });
