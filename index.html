@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vexora Bonus Spin</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 5px solid #ff9800;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1);
+        }
+        .wheel {
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                #f44336 0deg 60deg, 
+                #2196f3 60deg 120deg, 
+                #4caf50 120deg 180deg, 
+                #ffeb3b 180deg 240deg, 
+                #9c27b0 240deg 300deg, 
+                #ff9800 300deg 360deg
+            );
+        }
+        .pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid white;
+            z-index: 10;
+        }
+        button {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #ff9800;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,152,0,0.4);
+        }
+        button:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div class="pointer"></div>
+    <div class="wheel-container" id="container">
+        <div class="wheel"></div>
+    </div>
+
+    <button onclick="spin()">SPIN ET! 🎡</button>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Pəncərəni tam aç
+
+        function spin() {
+            const container = document.getElementById('container');
+            const randomDegree = Math.floor(Math.random() * 3600) + 720; // Ən az 2 dövr
+            container.style.transform = `rotate(${randomDegree}deg)`;
+            
+            setTimeout(() => {
+                tg.showAlert("Təbriklər! Bonus qazandınız! 🎉");
+            }, 4100);
+        }
+    </script>
+</body>
+</html>
