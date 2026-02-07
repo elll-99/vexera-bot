@@ -15,7 +15,18 @@ app.get('/', (req, res) => {
 // 2. PORT AYARI (Render üçün vacibdir)
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
-    console.log("Server is running on port " + PORT);
+    console.logconst express = require('express');
+const app = express();
+const path = require('path');
+
+app.use(express.static(__dirname));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Web Service is running on port ${PORT}`);
 });
 
 // 3. TELEGRAM BOT AYARI
@@ -33,3 +44,4 @@ bot.onText(/\/start/, (msg) => {
         }
     });
 });
+
